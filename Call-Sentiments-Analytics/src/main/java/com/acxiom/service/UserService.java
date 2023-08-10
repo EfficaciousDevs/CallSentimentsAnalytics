@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -72,13 +74,29 @@ public class UserService {
     }
 
     public User registerNewUser(User user) {
-        Role role = roleDao.findById("User").get();
+        Set<Role> userRoleName = user.getRole();
+        String passedRole = "";
+        for(Role role: userRoleName){
+            passedRole = role.getRoleName();
+        }
+        Role role = roleDao.findById(passedRole).get();
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(role);
         user.setRole(userRoles);
         user.setUserPassword(getEncodedPassword(user.getUserPassword()));
 
         return userDao.save(user);
+    }
+
+    public List<User> userList(){
+        Iterable<User> userRoles =  userDao.findAll();
+
+        List<User> rolesList = new ArrayList<>();
+        for(User user: userRoles){
+            rolesList.add(user);
+        }
+
+        return rolesList;
     }
 
     public String getEncodedPassword(String password) {

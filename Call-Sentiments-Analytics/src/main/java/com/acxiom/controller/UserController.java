@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -28,21 +29,27 @@ public class UserController {
         return userService.registerNewUser(user);
     }
 
+    @GetMapping({"/getUsers"})
+    public List<User> getUserList(){
+        return userService.userList();
+    }
+
+
     @GetMapping({"/forAdmin"})
     @PreAuthorize("hasRole('Admin')")
     public String forAdmin(){
-        return "This URL is only accessible to the admin";
+        return "This URL is only accessible to Admins";
     }
 
     @GetMapping({"/forManager"})
     @PreAuthorize("hasRole('Manager')")
     public String forManager(){
-        return "This URL is only accessible to the Manager";
+        return "This URL is only accessible to the Managers";
     }
 
     @GetMapping({"/forUser"})
     @PreAuthorize("hasRole('User')")
     public String forUser(){
-        return "This URL is only accessible to the user";
+        return "This URL is only accessible to the all Users";
     }
 }
