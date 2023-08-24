@@ -7,11 +7,9 @@ import com.acxiom.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -98,8 +96,34 @@ public class UserService {
 
         return rolesList;
     }
+    @Transactional
+    public String removeUser(String userName){
+        User deletedUser = userDao.findByUserName(userName);
+        if (deletedUser != null) {
+            userDao.delete(deletedUser);
+            return deletedUser.getUserName() + " "+ "has been deleted successfully.";
+        }else{
+            return "User Not found...";
+        }
+    }
 
-    public String getEncodedPassword(String password) {
+    public String updateUser(User user){
+        User updateUser = userDao.findByUserName(user.getUserName());
+
+        if(updateUser != null){
+            updateUser.setUserFirstName(user.getUserFirstName());
+            updateUser.setUserLastName(user.getUserLastName());
+            updateUser.setUserPassword(getEncodedPassword(user.getUserPassword()));
+            updateUser.setUserName(user.getUserName());
+            updateUser.setRole(user.getRole());
+
+            userDao.save(updateUser);
+            return "Updated Successfully";
+        }
+        return "Update Failure";
+    }
+
+public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }
 }

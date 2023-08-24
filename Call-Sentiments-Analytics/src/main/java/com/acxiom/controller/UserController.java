@@ -5,10 +5,7 @@ import com.acxiom.entity.User;
 import com.acxiom.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -18,6 +15,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+
 
     @PostConstruct
     public void initRoleAndUser() {
@@ -34,6 +33,15 @@ public class UserController {
         return userService.userList();
     }
 
+    @PostMapping({"/deleteUser"})
+    public String deleteUser(@RequestBody String username){
+        return userService.removeUser(username);
+    }
+
+    @PostMapping({"/updateUser"})
+    public String updateUser(@RequestBody User user){
+        return userService.updateUser(user);
+    }
 
     @GetMapping({"/forAdmin"})
     @PreAuthorize("hasRole('Admin')")

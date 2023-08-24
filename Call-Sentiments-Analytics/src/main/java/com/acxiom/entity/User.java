@@ -1,24 +1,30 @@
 package com.acxiom.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users_table")
 public class User {
 
     @Id
+    @Column(name="user_name")
     private String userName;
+    @Column(name="user_first_name")
     private String userFirstName;
+    @Column(name="user_last_name")
     private String userLastName;
+    @Column(name="user_password")
     private String userPassword;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLE",
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "user_roles",
             joinColumns = {
-                    @JoinColumn(name = "USER_ID")
+                    @JoinColumn(name = "user_name")
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID")
+                    @JoinColumn(name = "role_name")
             }
     )
     private Set<Role> role;
