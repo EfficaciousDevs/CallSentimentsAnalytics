@@ -2,20 +2,20 @@ package com.acxiom.entity;
 
 public class JwtResponse {
 
-    private User user;
+    private MainDB user;
     private String jwtToken;
 
 
-    public JwtResponse(User user, String jwtToken) {
+    public JwtResponse(MainDB user, String jwtToken) {
         this.user = user;
         this.jwtToken = jwtToken;
     }
 
-    public User getUser() {
+    public MainDB getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(MainDB user) {
         this.user = user;
     }
 

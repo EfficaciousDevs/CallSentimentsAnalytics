@@ -52,6 +52,17 @@ public class MainDB {
     @Column(name = "training_program")
     private String trainingProgram;
 
+    @Column(name = "last_loggedIn")
+    private Date lastLoggedIn;
+
+
+    public Date getLastLoggedIn() {
+        return lastLoggedIn;
+    }
+
+    public void setLastLoggedIn(Date lastLoggedIn) {
+        this.lastLoggedIn = lastLoggedIn;
+    }
 
     public int getUserId() {
         return userId;

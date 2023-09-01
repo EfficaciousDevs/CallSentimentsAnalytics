@@ -27,12 +27,20 @@ public class PerformanceTrack {
     @Column(name= "training_end_date")
     private Date trainingEndDate;
 
-    @Column(name = "training_days")
-    private int trainingDays;
 
     @Column(name = "training_course")
     private String trainingCourse;
 
+    @Column(name = "last_logged_in")
+    private Date lastLoggedIn;
+
+    public Date getLastLoggedIn() {
+        return lastLoggedIn;
+    }
+
+    public void setLastLoggedIn(Date lastLoggedIn) {
+        this.lastLoggedIn = lastLoggedIn;
+    }
 
     public int getAgentId() {
         return agentId;
@@ -82,13 +90,13 @@ public class PerformanceTrack {
         this.trainingEndDate = trainingEndDate;
     }
 
-    public int getTrainingDays() {
-        return trainingDays;
-    }
-
-    public void setTrainingDays(int trainingDays) {
-        this.trainingDays = trainingDays;
-    }
+//    public int getTrainingDays() {
+//        return trainingDays;
+//    }
+//
+//    public void setTrainingDays(int trainingDays) {
+//        this.trainingDays = trainingDays;
+//    }
 
     public String getTrainingCourse() {
         return trainingCourse;

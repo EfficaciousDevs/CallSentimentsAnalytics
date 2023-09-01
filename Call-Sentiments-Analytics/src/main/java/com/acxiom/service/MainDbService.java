@@ -2,8 +2,8 @@ package com.acxiom.service;
 
 import com.acxiom.Dao.MainDao;
 import com.acxiom.entity.MainDB;
-import com.acxiom.entity.Role;
-import com.acxiom.entity.User;
+//import com.acxiom.entity.Role;
+//import com.acxiom.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -149,7 +149,8 @@ public class MainDbService {
             if(Objects.nonNull(updatedUser.getRoleType()))
                 updateUser.setRoleType(updatedUser.getRoleType());
 
-            updateUser.setTrainingFlag(updatedUser.getTrainingStartDate() != null ? "Active" : "Not Active");
+            if(updatedUser.getTrainingStartDate() != null && updatedUser.getTrainingEndDate() != null)
+                updateUser.setTrainingFlag(updatedUser.getTrainingFlag());
 
             if(updatedUser.getTrainingDays() > 0)
                 updateUser.setTrainingDays(updatedUser.getTrainingDays());
@@ -180,6 +181,15 @@ public class MainDbService {
         return rolesList;
     }
 
+    public String loginStatus(Date loginState,int userId) {
+        MainDB userLoginState = mainDao.findById(userId);
+
+        if (userLoginState != null) {
+            userLoginState.setLastLoggedIn(loginState);
+            return "LoggedIn";
+        }
+        return "Login Failed.";
+    }
     public String getEncodedPassword(String password) {
         return passwordEncoder.encode(password);
     }

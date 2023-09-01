@@ -27,10 +27,25 @@ public class AnalysisController {
         return defaultAnalysisService.analysisList();
     }
 
-    @PostMapping({"/add-remarks"})
-    public String addRemarks(@RequestBody DefaultAnalysis agent){
+    @PostMapping("/getAgentAnalytics")
+    public List<DefaultAnalysis> getAgentAnalytics(String agentId){
+        return defaultAnalysisService.analysisAgentList(agentId);
+    }
 
-        return defaultAnalysisService.addRemarks(agent);
+    @PostMapping("/getManagerReviewData")
+    public List<DefaultAnalysis> getManagerReviewData(String[] agentIds){
+        return defaultAnalysisService.getManagerReviewData(agentIds);
+    }
+
+//    @PostMapping({"/add-remarks"})
+//    public String addRemarks(@RequestBody DefaultAnalysis agent){
+//
+//        return defaultAnalysisService.addRemarks(agent);
+//    }
+
+    @PostMapping("/remove-agent")
+    public String deleteEntity(String callId){
+        return defaultAnalysisService.removeAgent(callId);
     }
 
     @PostMapping({"/getAudioFile"})

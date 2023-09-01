@@ -15,11 +15,12 @@ public class DefaultAnalysis {
     @Id
     @Column(name = "call_id")
     private String callId;
+
 //    @Column(name = "customer_support_area_of_improvement")
 //    private String custSuppAreaOfImprov;
 //
-//    @Column(name = "customer_is_greeted")
-//    private String customerGreeted;
+    @Column(name = "agent_name")
+    private String agentName;
 //
 //    @Column(name = "greet_text")
 //    private String greetText;
@@ -58,8 +59,8 @@ public class DefaultAnalysis {
 //    @Column(name = "conversational_sentiment")
 //    private String conversationalSentiment;
 //
-//    @Column(name = "topic")
-//    private String topic;
+    @Column(name = "key_score")
+    private int keyScore;
 
     @Column(name = "summary")
     private String summary;
@@ -83,6 +84,44 @@ public class DefaultAnalysis {
     private String remark;
 
 
+
+    @Column(name = "manager_id")
+    private int managerId;
+
+    @Column(name = "manager_name")
+    private String managerName;
+
+    public int getKeyScore() {
+        return keyScore;
+    }
+
+    public void setKeyScore(int keyScore) {
+        this.keyScore = keyScore;
+    }
+
+    public int getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
+    }
+
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public String getAgentName() {
+        return agentName;
+    }
+
+    public void setAgentName(String agentName) {
+        this.agentName = agentName;
+    }
 
     public String getCallId() {
         return callId;

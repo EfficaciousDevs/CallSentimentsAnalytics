@@ -1,7 +1,7 @@
 package com.acxiom.controller;
 
 
-import com.acxiom.entity.ManagerAgentTable;
+//import com.acxiom.entity.ManagerAgentTable;
 import com.acxiom.entity.PerformanceTrack;
 import com.acxiom.service.AgentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +40,13 @@ public class AgentManagerController {
         return agentService.addLearners(learner);
     }
 
-   @PostMapping({"/assignTraining"})
-    public String assignTraining(@RequestBody ManagerAgentTable agent){
-       return agentService.assignTraining(agent);
-   }
+//   @PostMapping({"/assignTraining"})
+//    public String assignTraining(@RequestBody ManagerAgentTable agent){
+//       return agentService.assignTraining(agent);
+//   }
 
-   @PostMapping({"/delete-agents"})
-    public String deleteAgents(int agentId){
-        return agentService.deleteAgent(agentId);
-   }
+//   @PostMapping({"/delete-agents"})
+//    public String deleteAgents(int agentId){
+//        return agentService.deleteAgent(agentId);
+//   }
 }

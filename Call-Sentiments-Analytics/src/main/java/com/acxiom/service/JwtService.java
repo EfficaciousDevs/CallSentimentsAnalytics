@@ -1,11 +1,11 @@
 package com.acxiom.service;
 
 import com.acxiom.Dao.MainDao;
-import com.acxiom.Dao.UserDao;
+//import com.acxiom.Dao.UserDao;
 import com.acxiom.entity.JwtRequest;
 import com.acxiom.entity.JwtResponse;
 import com.acxiom.entity.MainDB;
-import com.acxiom.entity.User;
+//import com.acxiom.entity.User;
 import com.acxiom.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,8 +27,8 @@ public class JwtService implements UserDetailsService {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @Autowired
-    private UserDao userDao;
+//    @Autowired
+//    private UserDao userDao;
 
     @Autowired
     private MainDao mainDao;
@@ -44,17 +44,17 @@ public class JwtService implements UserDetailsService {
         UserDetails userDetails = loadUserByUsername(userName);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
 
-        User user = userDao.findById(userName).get();
+        MainDB user = mainDao.findByUserName(userName);
         return new JwtResponse(user, newGeneratedToken);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findById(username).get();
+        MainDB user = mainDao.findByUserName(username);
         if (user != null) {
             return new org.springframework.security.core.userdetails.User(
                     user.getUserName(),
-                    user.getUserPassword(),
+                    user.getPassword(),
                     getAuthority(user)
             );
         } else {
@@ -62,11 +62,11 @@ public class JwtService implements UserDetailsService {
         }
     }
 
-    private Set getAuthority(User user) {
+    private Set getAuthority(MainDB user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-        user.getRole().forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
-        });
+//        user.getRole().forEach(role -> {
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRoleType()));
+//        });
 
         return authorities;
     }

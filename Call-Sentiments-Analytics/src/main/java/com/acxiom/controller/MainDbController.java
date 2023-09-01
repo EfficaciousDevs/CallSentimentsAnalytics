@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -40,5 +41,10 @@ public class MainDbController {
     @PostMapping({"/update-user"})
     public String updateUser(@RequestBody MainDB user){
         return mainDbService.editUser(user);
+    }
+
+    @PostMapping({"/login-status"})
+    public String loginStatus(Date activeTimestamp,int userId){
+        return mainDbService.loginStatus(activeTimestamp,userId);
     }
 }
