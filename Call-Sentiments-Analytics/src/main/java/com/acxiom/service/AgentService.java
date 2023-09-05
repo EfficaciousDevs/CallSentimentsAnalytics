@@ -44,6 +44,10 @@ public class AgentService {
         return PerformanceTrackList;
     }
 
+    public PerformanceTrack findLearner(int agentId){
+        return performanceTrackDao.findByAgentId(agentId);
+    }
+
     public String addLearners(PerformanceTrack learner){
         performanceTrackDao.save(learner);
         return "Added Successfully.";

@@ -37,11 +37,7 @@ public class AnalysisController {
         return defaultAnalysisService.getManagerReviewData(agentIds);
     }
 
-//    @PostMapping({"/add-remarks"})
-//    public String addRemarks(@RequestBody DefaultAnalysis agent){
 //
-//        return defaultAnalysisService.addRemarks(agent);
-//    }
 
     @PostMapping("/remove-agent")
     public String deleteEntity(String callId){

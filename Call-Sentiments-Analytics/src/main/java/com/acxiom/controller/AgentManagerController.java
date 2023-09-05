@@ -40,6 +40,11 @@ public class AgentManagerController {
         return agentService.addLearners(learner);
     }
 
+    @PostMapping({"/find-agent"})
+    public PerformanceTrack findAgentData(int agentId){
+        return agentService.findLearner(agentId);
+    }
+
 //   @PostMapping({"/assignTraining"})
 //    public String assignTraining(@RequestBody ManagerAgentTable agent){
 //       return agentService.assignTraining(agent);

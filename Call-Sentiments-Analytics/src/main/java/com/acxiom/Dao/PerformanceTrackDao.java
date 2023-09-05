@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PerformanceTrackDao extends CrudRepository<PerformanceTrack,Integer> {
+
+    PerformanceTrack findByAgentId(int agentId);
 }
