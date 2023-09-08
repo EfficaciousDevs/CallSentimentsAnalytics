@@ -42,7 +42,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/getManagerReviewData","/find-agent",
-                        "/login-status","/authenticate","/get-learners","/register-user","/addLearners","/getAgentAnalytics","/delete-agents","/delete-user","/update-user", "/registerNewUser","/getUsers","/deleteUser","/updateUser", "/default-analysis","/agentManagers","/addNewAgents","/add-remarks","/assignTraining","/getAudioFile","/get-users","/remove-agent").permitAll()
+                        "/login-status","/authenticate","/get-learners",
+                        "/register-user","/addLearners","/getAgentAnalytics",
+                        "/delete-agents","/delete-user","/update-user",
+                        "/registerNewUser","/getUsers","/deleteUser","/updateUser",
+                        "/default-analysis","/agentManagers","/addNewAgents",
+                        "/add-remarks","/assignTraining","/getAudioFile",
+                        "/get-users","/remove-agent").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()

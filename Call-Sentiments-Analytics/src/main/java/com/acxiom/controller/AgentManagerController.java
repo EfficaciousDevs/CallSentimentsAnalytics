@@ -20,16 +20,6 @@ public class AgentManagerController {
     private AgentService agentService;
 
 
-//   @GetMapping({"/agentManagers"})
-//    public List<ManagerAgentTable> agentTableList(){
-//       return agentService.userList();
-//   }
-//
-//   @PostMapping({"/addNewAgents"})
-//    public String addAgents(ManagerAgentTable agent){
-//       return agentService.addAgentHelper(agent);
-//   }
-
     @GetMapping({"/get-learners"})
     public List<PerformanceTrack> getList(){
         return agentService.learnerList();
@@ -45,13 +35,4 @@ public class AgentManagerController {
         return agentService.findLearner(agentId);
     }
 
-//   @PostMapping({"/assignTraining"})
-//    public String assignTraining(@RequestBody ManagerAgentTable agent){
-//       return agentService.assignTraining(agent);
-//   }
-
-//   @PostMapping({"/delete-agents"})
-//    public String deleteAgents(int agentId){
-//        return agentService.deleteAgent(agentId);
-//   }
 }
