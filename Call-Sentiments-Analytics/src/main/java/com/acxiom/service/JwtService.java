@@ -1,11 +1,9 @@
 package com.acxiom.service;
 
 import com.acxiom.Dao.MainDao;
-//import com.acxiom.Dao.UserDao;
 import com.acxiom.entity.JwtRequest;
 import com.acxiom.entity.JwtResponse;
 import com.acxiom.entity.MainDB;
-//import com.acxiom.entity.User;
 import com.acxiom.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -67,7 +65,6 @@ public class JwtService implements UserDetailsService {
 //        user.getRole().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRoleType()));
 //        });
-
         return authorities;
     }
 

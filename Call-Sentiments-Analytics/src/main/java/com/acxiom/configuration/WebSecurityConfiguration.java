@@ -48,7 +48,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/registerNewUser","/getUsers","/deleteUser","/updateUser",
                         "/default-analysis","/agentManagers","/addNewAgents",
                         "/add-remarks","/assignTraining","/getAudioFile",
-                        "/get-users","/remove-agent").permitAll()
+                        "/get-users","/remove-agent","/getAgentPerformanceComments","/getCategoryProblems").permitAll()
                 .antMatchers(HttpHeaders.ALLOW).permitAll()
                 .anyRequest().authenticated()
                 .and()

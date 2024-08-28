@@ -25,8 +25,8 @@ public class DefaultAnalysis {
 //    @Column(name = "greet_text")
 //    private String greetText;
 //
-//    @Column(name = "customer_satisfaction")
-//    private String customerSatisfaction;
+    @Column(name = "customer_satisfaction")
+    private String customerSatisfaction;
 //
 //    @Column(name = "closing_greeting")
 //    private String closingGreeting;
@@ -42,8 +42,10 @@ public class DefaultAnalysis {
 
 //    @Column(name = "conclusion")
 //    private String conclusion;
-//    @Column(name = "resolution_status")
-//    private String resolutionStatus;
+
+    @Column(name = "resolution_status")
+    private String resolutionStatus;
+
 //    @Column(name = "resolution_status_reason")
 //    private String resolutionStatusReason;
 
@@ -74,16 +76,14 @@ public class DefaultAnalysis {
     @Column(name = "datetime")
     private Date dateTime;
 
-//    @Column(name = "call_duration")
-//    private int callDuration;
+    @Column(name = "call_duration")
+    private int callDuration;
 //
 //    @Column(name="review_flag")
 //    private int reviewFlag;
 //
     @Column(name = "remark")
     private String remark;
-
-
 
     @Column(name = "manager_id")
     private int managerId;
@@ -131,6 +131,7 @@ public class DefaultAnalysis {
         this.callId = callId;
     }
 
+
 //    public String getCustSuppAreaOfImprov() {
 //        return custSuppAreaOfImprov;
 //    }
@@ -147,13 +148,13 @@ public class DefaultAnalysis {
 //        this.conclusion = conclusion;
 //    }
 //
-//    public String getResolutionStatus() {
-//        return resolutionStatus;
-//    }
-//
-//    public void setResolutionStatus(String resolutionStatus) {
-//        this.resolutionStatus = resolutionStatus;
-//    }
+    public String getResolutionStatus() {
+        return resolutionStatus;
+    }
+
+    public void setResolutionStatus(String resolutionStatus) {
+        this.resolutionStatus = resolutionStatus;
+    }
 //
 //    public String getResolutionStatusReason() {
 //        return resolutionStatusReason;
@@ -179,13 +180,13 @@ public class DefaultAnalysis {
 //        this.greetText = greetText;
 //    }
 //
-//    public String getCustomerSatisfaction() {
-//        return customerSatisfaction;
-//    }
+    public String getCustomerSatisfaction() {
+        return customerSatisfaction;
+    }
 //
-//    public void setCustomerSatisfaction(String customerSatisfaction) {
-//        this.customerSatisfaction = customerSatisfaction;
-//    }
+    public void setCustomerSatisfaction(String customerSatisfaction) {
+        this.customerSatisfaction = customerSatisfaction;
+    }
 //
 //    public String getClosingGreeting() {
 //        return closingGreeting;
@@ -219,13 +220,13 @@ public class DefaultAnalysis {
         this.transferPermission = transferPermission;
     }
 
-//    public int getCallDuration() {
-//        return callDuration;
-//    }
+    public int getCallDuration() {
+        return callDuration;
+    }
 //
-//    public void setCallDuration(int callDuration) {
-//        this.callDuration = callDuration;
-//    }
+    public void setCallDuration(int callDuration) {
+        this.callDuration = callDuration;
+    }
 //
 //    public int getReviewFlag() {
 //        return reviewFlag;
