@@ -2,7 +2,6 @@ package com.acxiom.service;
 
 import com.acxiom.Dao.DefaultAnalysisDao;
 import com.acxiom.entity.DefaultAnalysis;
-//import com.acxiom.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,10 +19,7 @@ public class DefaultAnalysisService {
 
         List<DefaultAnalysis> defaultAnalysisList = new ArrayList<>();
         for(DefaultAnalysis record: defaultAnalyses){
-            if(Objects.equals(record.getCustSuppSentiment(), "Negative")){
                 defaultAnalysisList.add(record);
-            }
-
         }
 
         return defaultAnalysisList;

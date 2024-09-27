@@ -8,7 +8,7 @@ import java.util.Date;
 public class CategoryWiseCommonProblems {
 
     @Id
-    @Column(name = "serialKey")
+    @Column(name = "\"serialKey\"")
     private int serialKey;
 
     @Column(name = "call_category")

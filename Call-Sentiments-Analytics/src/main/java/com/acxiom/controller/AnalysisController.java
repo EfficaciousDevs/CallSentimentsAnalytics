@@ -1,16 +1,19 @@
 package com.acxiom.controller;
 
-import com.acxiom.entity.CallDetails;
+import com.acxiom.entity.AgentPerformanceComments;
+import com.acxiom.entity.CrossSelling;
 import com.acxiom.entity.DefaultAnalysis;
+import com.acxiom.service.AgentPerformanceCommentsService;
 import com.acxiom.service.CallDetailsService;
+import com.acxiom.service.CrossSellingService;
 import com.acxiom.service.DefaultAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AnalysisController {
@@ -21,10 +24,25 @@ public class AnalysisController {
     @Autowired
     private CallDetailsService callDetailsService;
 
+    @Autowired
+    private AgentPerformanceCommentsService agentPerformanceCommentsService;
+
+    @Autowired
+    private CrossSellingService crossSellingService;
+
     @GetMapping({"/default-analysis"})
     public List<DefaultAnalysis> getAnalysisList(){
-
         return defaultAnalysisService.analysisList();
+    }
+
+    @PostMapping({"/agent-performance-comments"})
+    public List<AgentPerformanceComments> getAgentPerformanceComments(Integer agentId){
+        return agentPerformanceCommentsService.agentPerformanceComments(agentId);
+    }
+
+    @GetMapping({"/cross-selling-details"})
+    public List<CrossSelling> getCrossSellingList(){
+        return crossSellingService.crossSellingList();
     }
 
     @PostMapping("/getAgentAnalytics")

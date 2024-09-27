@@ -1,17 +1,20 @@
 package com.acxiom.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "agent_performance_comment")
-public class AgentPerformanceComments {
+@Table(name = "cross_sell")
+public class CrossSelling {
     @Id
     @Column(name = "\"serialKey\"")
     private int serialKey;
 
-    @Column(name = "agent_id")
-    private Integer agentId;
+    @Column(name = "category")
+    private String callCategory;
 
     @Column(name = "remark")
     private String remark;
@@ -27,12 +30,12 @@ public class AgentPerformanceComments {
         this.serialKey = serialKey;
     }
 
-    public Integer getAgentId() {
-        return agentId;
+    public String getCallCategory() {
+        return callCategory;
     }
 
-    public void setAgentId(Integer agentId) {
-        this.agentId = agentId;
+    public void setCallCategory(String callCategory) {
+        this.callCategory = callCategory;
     }
 
     public String getRemark() {

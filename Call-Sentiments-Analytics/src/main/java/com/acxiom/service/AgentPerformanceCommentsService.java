@@ -2,10 +2,8 @@ package com.acxiom.service;
 
 import com.acxiom.Dao.AgentPerformanceCommentsDao;
 import com.acxiom.entity.AgentPerformanceComments;
-import com.acxiom.entity.DefaultAnalysis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,5 +21,9 @@ public class AgentPerformanceCommentsService {
             agentPerformanceCommentsList.add(record);
         }
         return agentPerformanceCommentsList;
+    }
+
+    public List<AgentPerformanceComments> agentPerformanceComments(Integer agentId){
+        return agentPerformanceCommentsDao.findByAgentId(agentId);
     }
 }
